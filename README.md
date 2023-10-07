@@ -1,1 +1,1 @@
-# IFT3923-TP2
+# Killian Gervais & Gabriel Hazan - IFT3923-TP2
