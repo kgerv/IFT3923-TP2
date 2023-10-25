@@ -32,6 +32,8 @@ public class Age {
         if(fileTested != null) {
             // since tests can be made before the class we will say tests are up to date if diff < 7 days
             diff = fileTested.lastModified() - lastModifTest;
+            System.out.println("test file: " + fileTested.lastModified());
+            System.out.println("test file: " + lastModifTest);
             days = (int) (diff / 8.64e+7);
         }
         return days;
@@ -40,13 +42,17 @@ public class Age {
     private File getFile(String fileName, String pkgName) {
         File file = new File(fileName);
         String osType = System.getProperty("os.name").toLowerCase();
-        String path = osType.contains("windows") ? "src\\main\\java\\" : "src/main/java/";
+        String path = osType.contains("windows") ?
+                "C:\\Users\\Killian\\Desktop\\jfreechart-master\\"+"src\\main\\java\\" :
+                "C:\\Users\\Killian\\Desktop\\jfreechart-master\\"+"src/main/java/";
 
         if(!pkgName.isEmpty()) {
             path = path.concat(pkgName + fileName);
             file = new File(path);
-
-            return file.exists() ? file : null;
+            System.out.println("pkg exists for file: " + file.getAbsolutePath() + "\n" + file.exists());
+            System.out.println();
+            if(!file.exists()) return null;
+            System.out.println("qwerew");
         }
 
         // file not found in jfreechart-master directory
@@ -81,13 +87,9 @@ public class Age {
             return null;
         }
         File[] files = currentDir.listFiles();
-        boolean filesIsEmpty = files == null;
         boolean containsSrc = true;
         boolean containsTest = true;
         boolean containsJava = true;
-
-        // path to an empty directory
-        //if(files == null) return this.tlsValues;
 
         // not currently in "src" directory or lower
         if(!currentDir.getAbsolutePath().matches(".*\\Wsrc.*")) {
