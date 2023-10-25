@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Age {
     private File testFile;
@@ -23,21 +25,35 @@ public class Age {
         String fileTestedName = this.testFileName.replace("Test","");
         File fileTested;
 
-        try {
-            fileTested = this.getFile(fileTestedName, pkgName);
-        } catch (FileNotFoundException e) {
-            System.out.println("Could not find the file corresponding to the test file: " + fileTestedName);
-            return days;
-        }
 
-        // since tests can be made before the class we will say tests are up to date if diff < 7 days
-        diff = fileTested.lastModified() - lastModifTest;
-        days = (int) (diff / 8.64e+7);
+        fileTested = this.getFile(fileTestedName, pkgName);
+            //System.out.println("Could not find the file corresponding to the test file: " + fileTestedName);
+            //return days;
+        if(fileTested != null) {
+            // since tests can be made before the class we will say tests are up to date if diff < 7 days
+            diff = fileTested.lastModified() - lastModifTest;
+            days = (int) (diff / 8.64e+7);
+        }
         return days;
     }
 
-    private File getFile(String fileName, String pkgName) throws FileNotFoundException {
+    private File getFile(String fileName, String pkgName) {
         File file = new File(fileName);
+        String osType = System.getProperty("os.name").toLowerCase();
+        String path = osType.contains("windows") ? "src\\main\\java\\" : "src/main/java/";
+
+        if(!pkgName.isEmpty()) {
+            path = path.concat(pkgName + fileName);
+            file = new File(path);
+
+            return file.exists() ? file : null;
+        }
+
+        // file not found in jfreechart-master directory
+        if(!file.exists()) {
+            File dir = new File(file.getPath().replace(fileName, ""));
+            file = this.exploreLevel(file, dir);
+        }
 
         return file;
     }
@@ -52,8 +68,71 @@ public class Age {
         lastIdxSeparator = absoluteFilePath.lastIndexOf("/");
         if(lastIdxSeparator < 0) lastIdxSeparator = absoluteFilePath.lastIndexOf("\\");
         if(packNameStart < lastIdxSeparator) // no package when this is false
-            packageName = absoluteFilePath.substring(packNameStart, lastIdxSeparator);
+            packageName = absoluteFilePath.substring(packNameStart, lastIdxSeparator + 1);
 
         return packageName;
+    }
+
+    // explore current directory level and look for test files
+    // uses recursion to go into directory inside the current one
+    private File exploreLevel(File fileWanted, File currentDir) {
+        if(!currentDir.exists()) {
+            System.out.println("The system cannot find the path specified");
+            return null;
+        }
+        File[] files = currentDir.listFiles();
+        boolean filesIsEmpty = files == null;
+        boolean containsSrc = true;
+        boolean containsTest = true;
+        boolean containsJava = true;
+
+        // path to an empty directory
+        //if(files == null) return this.tlsValues;
+
+        // not currently in "src" directory or lower
+        if(!currentDir.getAbsolutePath().matches(".*\\Wsrc.*")) {
+            // check if current directory contains "src" directory
+            for(File f : files) {
+                if(f.getName().compareTo("src") == 0) {
+                    return this.exploreLevel(fileWanted, f);
+                }
+            }
+            containsSrc = false;
+        }
+        // not currently in "main" repository or lower
+        if(containsSrc && !currentDir.getAbsolutePath().matches(".*\\Wmain.*")) {
+            // check if current directory contains "test" directory
+            for(File f : files) {
+                if(f.getName().compareTo("main") == 0) {
+                    return this.exploreLevel(fileWanted, f);
+                }
+            }
+            containsTest = false;
+        }
+        // not currently in "java" repository or lower
+        if(containsSrc && containsTest && !currentDir.getAbsolutePath().matches(".*\\Wjava.*")) {
+            // check if current directory contains "test" directory
+            for(File f : files) {
+                if(f.getName().compareTo("java") == 0) {
+                    return this.exploreLevel(fileWanted, f);
+                }
+            }
+            containsJava = false;
+        }
+        // directory does not contains java file directory following Java & Maven format norms
+        if(!containsJava) return null;
+
+        for(File f : files) {
+
+            if(f.isDirectory()) {
+                return this.exploreLevel(fileWanted, f);
+            }
+
+            if(f.getName().compareTo(fileWanted.getName()) == 0) {
+                return f;
+            }
+        }
+
+        return null;
     }
 }
