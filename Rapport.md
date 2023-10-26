@@ -46,4 +46,21 @@ Q4 : Est-ce que les tests sont suffisamment documentés?
 * On mesure la DC = CLOC / LOC
 
 
+TACHE 2 :
+
+M1 = ratio taille code / taille test = 47488 / 17508
+- cette metrique a ete obtenu par l'outil coverage de intellij
+
+M2 : NCLOC =
+M3 : TLOC =
+M4 : TASSERT = 
+M5 : PMNT = 8150 - 3709 / 100
+- metrique obtenu par l'outil coverage de intellij
+
+M6 : NOM = 8150
+M7: MCT = 3709
+M8 : AGE = 
+- metrique obtenu par notre propre implémentation
+
+M9 : WMC = 2860
 
