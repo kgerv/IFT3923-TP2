@@ -48,50 +48,65 @@ Q4 : Est-ce que les tests sont suffisamment documentés?
 
 TACHE 2 :
 
-M1 = ratio taille code / taille test = 47488 / 17508
-- cette metrique a ete obtenu par l'outil coverage de intellij
+M1 = ratio taille code / taille test = 91732 / 40283 = 2.28
 
-M2 : NCLOC = 47488
-M3 : TLOC = 17508
--metrique obtenue par nos fonctions du tp1
+M2 : NCLOC = 91732
+- metric obtenue par l'outil statistic
+M3 : TLOC = 40283
+- metric obtenue par l'outil statistic
 M4 : TASSERT = 
 - metrique obtenue par nos fonctions du tp1
 M5 : PMNT = 8150 - 3709 / 8150 *100
 - metrique obtenu par l'outil coverage de intellij
 
 M6 : NOM = 8150
+- metrique obtenu par l'outil coverage
 M7: MCT = 3709
-M8 : AGE = 
+- metrique obtenu par l'outil coverage
+M8 : AGE = la valeur obtenue par cette métrique n'a pu etre utilisé, puisqu'elle considère la dernière date de modification celle de la derniere ouverture sur notre ordinateur. En effet, lorsqu'on la testé avec la version qu'on a télécharger de jfreechart
+  on constate qu'ils ont tous la meme date de last modified qui est la date a laquelle on unzip le dossier télécharger
 - metrique obtenu par notre propre implémentation
 
 M9 : WMC = 2860
 - metrique obtenue par l'outil metricsTree
+
+M11 : DC = CLOC / TLOC = 24430 / 40283 = 0.61
+
+M12 : CLOC = 24430
+- metrique obtenue par l'outil statistic
 
 TACHE 3:
 
 Q1: Est-ce qu'il y a assez de tests?
 
 Non, il n'y a pas assez de tests. Nous arrivons à cette conclusion en observant les métriques obtenues.
-1. le ratio taille code / taille test obtenue est de 47488/17508 = 2,712. Ce ratio est désequilibré. En effet, cela nous indique que le code est plus de 2 fois plus grands que ces tests.
+1. le ratio taille code / taille test obtenue est de 91732/40283 = 2,28. Ce ratio est désequilibré. En effet, cela nous indique que le code est plus de 2 fois plus grands que ses tests.
 2. le pourcenatge des méthodes non testées est de 8150-3709/8150 *100 = 54.49 %. Cette métrique nous indique que plus de 50% des méthodes du projets ne sont pas testées.
 D'après ces métriques nous pouvons conclure qu'il n'y a effectivement pas assez de tests.
 
 
 Q2 : Est-ce que les tests sont a jour avec le reste du code?
 
-Oui, les tests sont à jour avec le reste du code. Nous tirons cette conclusion d'après les métriques suivants:
-1. Les dernieres dates de modifications des fichiers tests sont en effet aussi vielles que celles de leurs classes associés.
+Nous n'avons pu répondre a cette question pour les raisons suivantes:
+1. Les dernieres dates de modifications des fichiers tests sont erronés puisqu'ils représentent la dates à laquelle nous avons unzip le fichier telecharger,comme mentionné avant
 2. Le PMNT est de 54.49% comme mentionné précédemment, cela peut signifier que le manque de tests et potentiellement du à un manque de mise a jour.
-Puisque ces 2 métriques proposes des conclusions opposés, il est difficile de venir à une conclusion définitive.
-Cependant, puisque la deuxième métrique indique un manque potentiel, une autre façon de determiner la réponse a cette question serait de mesurer l'évolution son évolution
+Puisque nous pouvons seulement recourir a une métrique, il est difficile de venir à une conclusion définitive.
+De plus, puisque la deuxième métrique indique un manque potentiel, une autre façon de determiner la réponse a cette question serait de mesurer son évolution
 Notamment le NOM et MCT. Si ces 2 métriques font au sorte que le PMNT garde un pourcentage similaire au fil du temps. Nous pourrons conclure que les tests sont, en effet, à jour.
+puisque nous n'avons pas ces données, nous ne pouvons pas répondre a cette question.
 
 
 Q3 : Est-ce que les tests sont trops complexes?
-
+1. Les fichiers test contiennent 3709 méthodes en tout... 
 
 
 
 Q4 : Est-ce que les tests sont suffisamment documentés?
+
+Oui, les tests sont suffisament documenté. Nous arrivons a cette conclusion d'après les metriques suivants:
+1. La densité de commentaire des tests est de 0.61, un ratio respectable. Ce ration indique la présence de commentaires dans anviron 60% des fichiers tests.
+2. Plus précisemment, on retrouve 24430 lignes de commentaires pour 40283 lignes de codes dans les fichiers tests. 
+3. Un nombre plus élevé indiquerait un surplus de documentation, ce qui pourrait nuire a la lisibilité des tests
+4. un nombre plus bas indiquerait, cependant, un manque de documentation qui nuira a la compréhension des tests du point de vue du lecteur.
 
 
