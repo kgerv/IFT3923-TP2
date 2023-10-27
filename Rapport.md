@@ -75,12 +75,25 @@ M11 : DC = CLOC / TLOC = 24430 / 40283 = 0.61
 M12 : CLOC = 24430
 - metrique obtenue par l'outil statistic
 
+Code : 
+- NCLOC = 91732
+- CLOC = 99939
+- NOC = 638
+- NOM = 8150
+
+TEST : 
+- NCLOC = 40283
+- CLOC = 24430
+- NOC = 358
+- WMC = 2860 de complexité pour 358 classes
+- NOM = 3709
+
 TACHE 3:
 
 Q1: Est-ce qu'il y a assez de tests?
 
-Non, il n'y a pas assez de tests. Nous arrivons à cette conclusion en observant les métriques obtenues.
-1. le ratio taille code / taille test obtenue est de 91732/40283 = 2,28. Ce ratio est désequilibré. En effet, cela nous indique que le code est plus de 2 fois plus grands que ses tests.
+1. le ratio taille code / taille test obtenue est de 91732/40283 = 2,28. Prenant en considération le fait que les fichiers de testes peuvent etre tres compact mais neanmoins suffisant, nous sommes de pensés qu'un ratio superieur a 3 équivaut un manque de test.
+   Plus précisément, si un fichier contient 3 fois plus de lignes de code que sont fichier test, nous pouvons conclure qu'il n'a pas assez de tests.
 2. le pourcenatge des méthodes non testées est de 8150-3709/8150 *100 = 54.49 %. Cette métrique nous indique que plus de 50% des méthodes du projets ne sont pas testées.
 D'après ces métriques nous pouvons conclure qu'il n'y a effectivement pas assez de tests.
 
