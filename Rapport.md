@@ -51,10 +51,12 @@ TACHE 2 :
 M1 = ratio taille code / taille test = 47488 / 17508
 - cette metrique a ete obtenu par l'outil coverage de intellij
 
-M2 : NCLOC =
-M3 : TLOC =
+M2 : NCLOC = 47488
+M3 : TLOC = 17508
+-metrique obtenue par nos fonctions du tp1
 M4 : TASSERT = 
-M5 : PMNT = 8150 - 3709 / 100
+- metrique obtenue par nos fonctions du tp1
+M5 : PMNT = 8150 - 3709 / 8150 *100
 - metrique obtenu par l'outil coverage de intellij
 
 M6 : NOM = 8150
@@ -63,4 +65,33 @@ M8 : AGE =
 - metrique obtenu par notre propre implémentation
 
 M9 : WMC = 2860
+- metrique obtenue par l'outil metricsTree
+
+TACHE 3:
+
+Q1: Est-ce qu'il y a assez de tests?
+
+Non, il n'y a pas assez de tests. Nous arrivons à cette conclusion en observant les métriques obtenues.
+1. le ratio taille code / taille test obtenue est de 47488/17508 = 2,712. Ce ratio est désequilibré. En effet, cela nous indique que le code est plus de 2 fois plus grands que ces tests.
+2. le pourcenatge des méthodes non testées est de 8150-3709/8150 *100 = 54.49 %. Cette métrique nous indique que plus de 50% des méthodes du projets ne sont pas testées.
+D'après ces métriques nous pouvons conclure qu'il n'y a effectivement pas assez de tests.
+
+
+Q2 : Est-ce que les tests sont a jour avec le reste du code?
+
+Oui, les tests sont à jour avec le reste du code. Nous tirons cette conclusion d'après les métriques suivants:
+1. Les dernieres dates de modifications des fichiers tests sont en effet aussi vielles que celles de leurs classes associés.
+2. Le PMNT est de 54.49% comme mentionné précédemment, cela peut signifier que le manque de tests et potentiellement du à un manque de mise a jour.
+Puisque ces 2 métriques proposes des conclusions opposés, il est difficile de venir à une conclusion définitive.
+Cependant, puisque la deuxième métrique indique un manque potentiel, une autre façon de determiner la réponse a cette question serait de mesurer l'évolution son évolution
+Notamment le NOM et MCT. Si ces 2 métriques font au sorte que le PMNT garde un pourcentage similaire au fil du temps. Nous pourrons conclure que les tests sont, en effet, à jour.
+
+
+Q3 : Est-ce que les tests sont trops complexes?
+
+
+
+
+Q4 : Est-ce que les tests sont suffisamment documentés?
+
 
