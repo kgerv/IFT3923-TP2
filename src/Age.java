@@ -16,7 +16,8 @@ public class Age {
     }
 
     // returns the difference between the last modification of a file and its test file in days
-    public int calculateAgeDifference() {
+    public List<String> calculateAgeDifference() {
+        List<String> infos = new ArrayList<>(2);
         int days = 0;
         long diff, lastModifTest = this.testFile.lastModified();
         String pkgName = this.filePackageName();
@@ -32,11 +33,15 @@ public class Age {
         if(fileTested != null) {
             // since tests can be made before the class we will say tests are up to date if diff < 7 days
             diff = fileTested.lastModified() - lastModifTest;
-            System.out.println("test file: " + fileTested.lastModified());
-            System.out.println("test file: " + lastModifTest);
+            //System.out.println("test file: " + fileTested.lastModified());
+            //System.out.println("test file: " + lastModifTest);
             days = (int) (diff / 8.64e+7);
+            infos.add(String.valueOf(days));
+        } else {
+            infos.add(String.valueOf(-1));
         }
-        return days;
+        infos.add(fileTestedName);
+        return infos;
     }
 
     private File getFile(String fileName, String pkgName) {
@@ -49,10 +54,9 @@ public class Age {
         if(!pkgName.isEmpty()) {
             path = path.concat(pkgName + fileName);
             file = new File(path);
-            System.out.println("pkg exists for file: " + file.getAbsolutePath() + "\n" + file.exists());
-            System.out.println();
+            //System.out.println("pkg exists for file: " + file.getAbsolutePath() + "\n" + file.exists());
+            //System.out.println();
             if(!file.exists()) return null;
-            System.out.println("qwerew");
         }
 
         // file not found in jfreechart-master directory
@@ -83,7 +87,7 @@ public class Age {
     // uses recursion to go into directory inside the current one
     private File exploreLevel(File fileWanted, File currentDir) {
         if(!currentDir.exists()) {
-            System.out.println("The system cannot find the path specified");
+            //System.out.println("The system cannot find the path specified");
             return null;
         }
         File[] files = currentDir.listFiles();
