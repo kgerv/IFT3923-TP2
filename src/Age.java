@@ -1,7 +1,5 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Age {
@@ -28,13 +26,8 @@ public class Age {
 
 
         fileTested = this.getFile(fileTestedName, pkgName);
-            //System.out.println("Could not find the file corresponding to the test file: " + fileTestedName);
-            //return days;
         if(fileTested != null) {
-            // since tests can be made before the class we will say tests are up to date if diff < 7 days
             diff = fileTested.lastModified() - lastModifTest;
-            //System.out.println("test file: " + fileTested.lastModified());
-            //System.out.println("test file: " + lastModifTest);
             days = (int) (diff / 8.64e+7);
             infos.add(String.valueOf(days));
         } else {
@@ -54,8 +47,6 @@ public class Age {
         if(!pkgName.isEmpty()) {
             path = path.concat(pkgName + fileName);
             file = new File(path);
-            //System.out.println("pkg exists for file: " + file.getAbsolutePath() + "\n" + file.exists());
-            //System.out.println();
             if(!file.exists()) return null;
         }
 
@@ -73,7 +64,6 @@ public class Age {
         int lastIdxSeparator, packNameStart;
 
         absoluteFilePath = this.testFile.getPath();
-        // package name start after ".*/test/java/" in the path
         packNameStart = absoluteFilePath.indexOf("java") + 5;
         lastIdxSeparator = absoluteFilePath.lastIndexOf("/");
         if(lastIdxSeparator < 0) lastIdxSeparator = absoluteFilePath.lastIndexOf("\\");
@@ -87,7 +77,6 @@ public class Age {
     // uses recursion to go into directory inside the current one
     private File exploreLevel(File fileWanted, File currentDir) {
         if(!currentDir.exists()) {
-            //System.out.println("The system cannot find the path specified");
             return null;
         }
         File[] files = currentDir.listFiles();

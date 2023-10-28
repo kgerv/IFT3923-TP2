@@ -1,5 +1,4 @@
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,7 +7,7 @@ import java.util.Stack;
 public class Main {
     public static void main(String[] args) {
         int ageBoundary = 7;
-        //File f = new File("C:\\Users\\Killian\\Desktop\\jfreechart-master\\src\\test");
+
         File f = new File("src\\test");
         List<List<String>> outdatedTests = new ArrayList<>();
         List<List<String>> ageList = new ArrayList<>();
