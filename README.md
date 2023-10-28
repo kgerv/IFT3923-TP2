@@ -26,3 +26,16 @@ Toutes les facon de lancer le jar vont afficher l'analyse en ligne de commande.
 Le second permet de changer la valeur du nombre de jours décrétant qu'un fichier de test n'est pas à 
 jour en comparaison au fichier qu'il teste, par défaut celle-ci est 7 jours.
 La derniere permet de sauvegarder le résultat dans un fichier csv a l'aide du chemin fournit.
+Ces outils sont instalables en allant dans "settings" > "plugins" > "marketplace".
+Les outils en questions sont metricsTree, statistic et coverage(deja inclu dans l'IDE).
+Toutes les données collectés ont été mis dans un fichier excel "jfreeClasses.xlsx".
+
+Guide d'utilisation metricsTree :
+après installation, clicker sur "View" > "Tool Windows" > "MetricsTree". Ensuite clicker sur project metrics.
+
+Guide d'utilisation coverage :
+Clicker sur "Run" > "Run 'all in jfreeCharts' with coverage ". 
+
+Guide d'utilisation Statistic :
+Après installation, clicker sur "View" > "Tool Windows" > "Statistic". Clicker sur le dossier sur lequel vous voulez les metriques, dans notre cas, nous avons sélectionner le dosser "java" du dossier "test". Ensuite, clicker sur "Refresh on selection" dans la fenetre de Statistic.
+
