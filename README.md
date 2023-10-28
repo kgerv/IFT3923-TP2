@@ -10,11 +10,11 @@ Les outils en questions sont metricsTree, statistic et coverage(deja inclu dans 
 Toutes les données collectés ont été mis dans un fichier excel "jfreeClasses.xlsx".
 
 Guide d'utilisation metricsTree :
-après instalation, clicker sur "View" > "Tool Windows" > "MetricsTree". Ensuite clicker sur project metrics.
+après installation, clicker sur "View" > "Tool Windows" > "MetricsTree". Ensuite clicker sur project metrics.
 
 Guide d'utilisation coverage :
 Clicker sur "Run" > "Run 'all in jfreeCharts' with coverage ". 
 
 Guide d'utilisation Statistic :
-Clicker sur "View" > "Tool Windows" > "Statistic". Clicker sur le dossier sur lequel vous voulez les metriques, dans notre cas, nous avons sélectionner le dosser "java" du dossier "test". Ensuite, clicker sur "Refresh on selection" dans la fenetre de Statistic.
+Après installation, clicker sur "View" > "Tool Windows" > "Statistic". Clicker sur le dossier sur lequel vous voulez les metriques, dans notre cas, nous avons sélectionner le dosser "java" du dossier "test". Ensuite, clicker sur "Refresh on selection" dans la fenetre de Statistic.
 
